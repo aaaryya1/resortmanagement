@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Room Availability</title>
+</head>
+<body>
+    <h1>Check Room Availability</h1>
+    
+    {% if error_message %}
+    <p class="error">{{ error_message }}</p>
+    {% endif %}
+    
+    <form method="POST" action="{% url 'checkavailability' %}">
+        {% csrf_token %}
+        <label for="check_in_date">Check-in Date:</label>
+        <input type="date" id="check_in_date" name="check_in_date" required>
+        <br>
+        
+        <label for="check_out_date">Check-out Date:</label>
+        <input type="date" id="check_out_date" name="check_out_date" required>
+        <br>
+        
+        <input type="submit" value="Check Availability">
+    </form>
+</body>
+</html>

@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ADD ROOM</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css.css' %}">
+    <style>
+    body {
+        background-image: url("{% static 'images/resort11.jpg' %}"); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-color: #333; 
+        color: #b3d7ff;
+        text-align: center;
+    }
+
+    .h1{
+        color: #b3d7ff;
+    }
+    title{
+        color: #b3d7ff;
+    }
+    .container {
+        max-width:600px;
+        background-color: rgba(0, 0, 0, 0.7); 
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 50px; 
+    }
+    .text-center button {
+    margin: 0 auto;
+    display: block;
+    }
+    .form-group label {
+    text-align: left; 
+    }
+    form {
+    padding: 20px;
+   
+    border-radius: 10px;
+    }
+    
+    .form-group {
+       color: #b3d7ff;
+       
+       margin-bottom: 20px; 
+       text-align: left;
+}
+    
+</style>
+</head>
+<body>
+<div class="container mt-3">
+    <h1 class="text-light text-center mb-4">ADD ROOM</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="col">
+                <div class="form-group">
+                    {{form.room_number.errors}}
+                    <label for="{{form.room_number.id_for_label}}">Room Number</label>
+                    {{form.room_number}}
+                </div>
+            </div>
+            <div class="col">
+                
+                <div class="form-group">
+                    {{form.room_type.errors}}
+                    <label for="{{form.room_type.id_for_label}}">Room Type</label>
+                    {{form.room_type}}
+                </div>
+                <div class="form-group">
+                    {{form.capacity.errors}}
+                    <label for="{{form.capacity.id_for_label}}">Capacity</label>
+                    {{form.capacity}}
+                </div>
+                <div class="form-group">
+                    {{form.price_per_night.errors}}
+                    <label for="{{form.price_per_night.id_for_label}}">Price per Night</label>
+                    {{form.price_per_night}}
+                </div>
+                <div class="form-group">
+                    {{form.description.errors}}
+                    <label for="{{form.description.id_for_label}}">Room Description</label>
+                    {{form.description}}
+                </div>
+                <div class="form-group mt-3">
+                    {{form.image.errors}}
+                    <label for="{{form.image.id_for_label}}">Room Image</label>
+                    <img src="{% static 'images/download.jpeg' %}" alt="Image Icon" height="30px" width="30px">
+                    {{form.image}}
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-info">ADD ROOM</button>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>
+</body>
+</html>

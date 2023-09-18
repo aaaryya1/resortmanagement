@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f0f0f0; 
+            padding-top: 20px; 
+        }
+        .room-container {
+            border: 1px solid #ccc; 
+            padding: 15px; 
+            margin-bottom: 15px;
+            display: flex; 
+            align-items: center; 
+        }
+        .room-image {
+            max-width: 150px; 
+            margin-right: 20px; 
+        }
+        .table-container {
+            margin-bottom: 15px; 
+        }
+        .btn-edit,
+        .btn-delete {
+            width: 100px; 
+        }
+        body{
+            background-image: url('static/images/resort11.jpg');
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+   
+            padding-top: 20px;
+        }
+        body {
+            padding-top: 20px; 
+            margin: 0; 
+            overflow: hidden;
+        }
+        .background {
+            position: relative; 
+        }
+        .background img {
+            width: 100%;
+            height: auto;
+        }
+        .container {
+            position: absolute; 
+            top: 0;
+            left: 10%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        .table-heading {
+            text-align: center;
+            padding-top: 20px;
+        }
+        .table-container {
+            margin-top: 50px;
+        }
+        .table-heading {
+        font-size: 36px;
+        color: #333;
+        transition: transform 0.3s ease-in-out; 
+      }
+
+        .table-heading:hover {
+        transform: scale(1.05); 
+    }
+           
+.room-container {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.room-data {
+    flex: 1; 
+}
+
+.room-image {
+    max-width: 150px;
+    margin-left: 20px;
+}
+
+.room-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.table {
+    table-layout: fixed; 
+    width: 100%; 
+}
+
+.table th {
+    text-align: left;
+    padding: 8px; 
+    background-color: #f0f0f0; 
+}
+
+
+.table td {
+    padding: 8px; 
+    border: 1px solid #ccc; 
+}
+
+
+.table td:first-child {
+    width: 10%;
+}
+.scroll-container {
+    height: 500px; 
+    overflow-y: scroll; 
+}
+
+.room-image img {
+    
+            width: 600px; 
+            height:250px; 
+        
+}
+
+ 
+    </style>
+</head>
+<body>
+    <div class="background">
+        <img src="\static\images\resort11.jpg" alt="Background Image">
+    </div>
+    <div class="container">
+        <div class="scroll-container">
+        <h1 class="table-heading">ROOM DETAILS</h1>
+        <div class="table-container">
+            <table class="table table-striped">
+                <tr>
+                    <th>Room Number</th>
+                    <th>Room Type</th>
+                    <th>Price per night</th>
+                    <th>Capacity</th>
+                    <th>Description</th>
+                    <th>image</th>
+                    <th></th>
+                    
+                </tr>
+            </table>
+        </div>
+        {% for i in data %}
+        
+<div class="room-container">
+    <div class="room-data">
+        <table class="table table-striped">
+            <tr>
+                
+                <td>{{ i.room_number }}</td>
+                <td>{{ i.room_type }}</td>
+                <td>{{ i.price_per_night }}</td>
+                <td>{{ i.capacity }}</td>
+                <td><p>{{ i.description }}</p></td>
+                <td>{% if i.image %}
+                    <img src="{{i.image.url}}" alt="image" height="200px" width="200px">
+                    {%endif%}
+                </td>
+               
+            </tr>
+        </table>
+    </div>
+  
+    <div class="room-buttons">
+        <a href="{% url 'editrm' i.id %}" class="btn btn-success">Edit</a>
+        <a href="{% url 'delrm' i.id %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+
+          
+        {% endfor %}
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

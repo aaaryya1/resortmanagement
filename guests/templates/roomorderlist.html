@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bookings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('/static/images/res3.jpg') center center fixed;
+            background-size: cover;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #111010;
+            font-size: 36px;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: rgba(102, 100, 100, 0.7);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #272727;
+        }
+
+        th {
+            background-color: #020202;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #121413;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>YOUR BOOKINGS</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Room Type</th>
+                <th>Room</th>
+                <th>Booking Date</th>
+                <th>Check-in Date</th>
+                <th>Check-out Date</th>
+                <th>Status</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.id }}</td>
+                    <td>{{ booking.room.room_type }}</td>
+                
+                    <td>
+                        <img src="{{ booking.room.image.url }}" alt="Room Image">
+                    </td>
+                    <td>{{booking.date}}</td>
+                    <td>{{ booking.check_in }}</td>
+                    <td>{{ booking.check_out }}</td>
+                    <td>{{ booking.status }}</td>
+                    <td>
+                        {% if booking.status == 'pending' or booking.status == 'confirmed' %}
+                            <a href="{% url 'cancel' booking.id %}" class="btn btn-danger">Cancel</a>
+                        {% else %}
+                            
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="7">You have no bookings yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function cancelBooking(bookingId) {
+           
+            alert('Booking canceled!'); 
+        }
+    </script>
+    <a href="{% url 'ghm' %}">Back to Home</a>
+</body>
+</html>

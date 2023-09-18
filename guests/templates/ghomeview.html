@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+       
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.header {
+    position: relative;
+    text-align: center;
+}
+
+
+.background-image {
+    width: 100%;
+    height: auto;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+}
+.background {
+    position: relative;
+}
+.background img {
+    width: 100%;
+    height: auto;
+}
+.navbar {
+    position: absolute;
+    top: 3%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    
+}
+.navbar a + a {
+    margin-left: 20px; 
+}
+.navbar a {
+    text-decoration: none;
+    color: #180444;;
+    font-weight: bold;
+    margin: 0 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navbar a:hover {
+    background-color:#ffffff;;
+}
+.text-overlay {
+    position: absolute;
+    top: 32%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    color:#180444;;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 10px; 
+    max-width: 80%; 
+}
+@keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .text-overlay {
+            animation: blink 10s infinite; 
+        }
+ </style>
+</head>
+<body>
+
+        <div class="container">
+            <div class="background">
+                <img src="\static\images\res3.jpg" alt="Background Image">
+            </div>
+            <div class="text-overlay">
+                <h1>Hello Home</h1>
+                <h2>Enjoy Your Stay To The Fullest Extent</h2>
+            </div>
+            <div class="navbar">
+                <a href="">HOME</a>
+                <a href="{% url 'About' %}">ABOUT</a>
+                <a href="{% url 'guesthm' %}">ROOMS & SUITES</a>
+                <a href="{% url 'viewevent' %}">EVENTS</a>
+                <a href="{% url 'bookingdt' %}">MY BOOKINGS</a>
+                
+                <a href="{% url 'glgout' %}">LOGOUT</a>
+                
+                
+               
+            </div>
+            
+        </div>
+       
+    </div>
+    
+    
+</div>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <style>
+       
+        body {
+            background-color: #f0f0f0; 
+            background-image: url('/static/images/res3.jpg');
+            background-size: cover; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .contact-details {
+            background-color: #28a745;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px 0 0 10px;
+            text-align: left;
+        }
+
+        
+        .contact-us {
+           
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        form {
+            padding: 20px;
+            flex: 1; 
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+
+      
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        input[type="tel"] {
+            width: 100%;
+            padding: 8px; 
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+      
+        small {
+            display: block;
+            margin-top: 5px;
+            color: #777;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-details">
+            <h3>Contact Us</h3>
+            <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+            <ul>
+                <li>Email: <a href="mailto:hellohome@example.com">hellohome@example.com</a></li>
+                <li>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></li>
+            </ul>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            
+            
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" >
+
+           
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+           
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+
+            
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{10}" required>
+            <small>Enter a 10-digit phone number without spaces or dashes.</small>
+
+           
+            <input type="submit" value="Complete Booking">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% extends 'navbar.html' %}
+{% block content %}
+<style>
+    .background-div {
+        background-image: url('/static/images/res3.jpg'); /* Specify the path to your background image */
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        /* Add other background properties or styles here */
+    }
+    /* styles.css */
+
+/* Style for h1 */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #051e6d; /* Change the color as needed */
+    text-align: center;
+    margin: 20px 0; /* Add margin as needed */
+}
+
+/* Style for h2 */
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #180444; /* Change the color as needed */
+    margin: 15px 0; /* Add margin as needed */
+}
+
+/* Style for h3 */
+h5 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #180444; 
+    margin: 10px 0; 
+    margin-left: 20px;
+}
+.feedback-button {
+        margin-top: 10px; 
+        float: right; 
+        
+    }
+
+
+</style>
+
+<div class="background-div">
+    <h1 class="font-bold text-center">
+        <b>Hello Home</b>
+    </h1>
+    <br>
+
+    <h5><b>Welcome</b> <b>{{ request.user.first_name }} {{ request.user.last_name }} Enjoy luxury at its finest.</b></h5>
+    <br>
+
+
+    <div class="container">
+        <div class="Row">
+            {% for room in Room %}
+            <div class="card mb-4 " style="max-width: 1300px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ room.image.url }}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h6 class="card-title">Hello Home</h6>
+                            <p class="card-title"><b>Room  : </b>{{ room.room_number }}</p>
+                            <p class="card-text"><b>Room Type  : </b>{{ room.room_type }}</p>
+                            <p class="card-text"><b>Sleeps  : </b>{{ room.capacity }}</p>
+                            <div class="card-body">
+                                <a href="" class="btn btn-primary">Give Feedback</a>
+                                <a href="{% url 'rdetails' room.id %}" class="card-link btn-btn-warning">View more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

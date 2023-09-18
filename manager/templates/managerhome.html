@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .navbar a + a {
+        margin-left: 20px; 
+        }
+    .navbar a {
+    text-decoration: none;
+    color: #180444;;
+    font-weight: bold;
+    margin: 0 10px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+        .navbar {
+            background-color: #333333;
+            overflow: hidden;
+            justify-content: flex-end;;
+            display: flex;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .content {
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    
+    <a href="{% url 'roomaddview' %}">ADD ROOM</a>
+    <a href="{% url 'viewroomlist' %}">VIEW ROOM LIST</a>
+    <a href="{% url 'addevent' %}">ADD EVENT</a>
+    <a href="{% url 'vieweventlist' %}">VIEW EVENT LIST</a>
+    <a href="{% url 'viewbklst' %}">VIEW BOOKINGS</a>
+    <a href="{% url 'glgout' %}">LOGOUT</a>
+    
+    
+</div>
+
+
+<div class="container">
+    <img class="image" src="\static\images\resort11.jpg" width="1400px" height="200px">
+    <div class="image-text"></div>
+    
+</div>
+
+</body>
+</html>

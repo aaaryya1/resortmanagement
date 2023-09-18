@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('static/images/res3.jpg'); /* Set the background image URL here */
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-attachment: fixed; /* Fixed background */
+            background-color: #f0f0f0; /* Fallback background color */
+            margin: 0; /* Remove default margin */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #0f0e0e; 
+            /* Set text color to contrast with the background */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1a1818;
+            color: #fff; 
+        }
+        th, td {
+            border: 1px solid #1a1818;
+            padding: 8px;
+            text-align: left;
+            color: hsl(0, 0%, 6%);
+            background-color: #f0f0f0;
+        }  
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>EVENT LIST</h1><br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Start Date and Time</th>
+                <th>End Date and Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.description }}</td>
+                <td>{{ event.location }}</td>
+                <td>{{ event.start_date }}</td>
+                <td>{{ event.end_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
